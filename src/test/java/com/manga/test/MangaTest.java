@@ -138,6 +138,32 @@ public class MangaTest {
             // 3. Manga Details Modal
 
             // Ensure the user is on the manga search page.
+            driver.get(url);
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+
+            WebElement loginForm2 = driver.findElement(By.xpath("/html/body/div/div/div/h2"));
+            if (loginForm2.isDisplayed()) {
+                System.out.println("Login form is displayed.");
+            } else {
+                System.out.println("Login form is NOT displayed.");
+            }
+
+
+            WebElement webElement6 = driver.findElement(By.cssSelector("#username"));
+            webElement6.clear();
+            webElement6.sendKeys(username);
+
+            WebElement webElement7 = driver.findElement(By.cssSelector("#password"));
+            webElement7.clear();
+            webElement7.sendKeys(password);
+
+
+            driver.findElement(By.cssSelector("#login-btn")).click();
+
+
+            // Ensure the user is on the manga search page.
 
             WebElement userAgainOnMangaSearchPage = driver.findElement(By.xpath("/html/body/div/div/div[1]/button"));
             if (userAgainOnMangaSearchPage.isDisplayed()) {
