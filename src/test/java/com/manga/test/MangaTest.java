@@ -135,13 +135,55 @@ public class MangaTest {
                 System.out.println("No manga found is displayed.");
             }
 
+            // 3. Manga Details Modal
 
+            // Ensure the user is on the manga search page.
 
+            WebElement userAgainOnMangaSearchPage = driver.findElement(By.xpath("/html/body/div/div/div[1]/button"));
+            if (userAgainOnMangaSearchPage.isDisplayed()) {
+                System.out.println("User is on the manga search page.");
+            } else {
+                System.out.println("User is NOT on the manga search page.");
+            }
 
+            // Click the "Details" link on a manga card
 
+            driver.findElement(By.xpath("/html/body/div/div/div[2]/div[4]/p[1]/span")).click();
 
+            // Verify that the modal appears and displays the correct manga information (image, name, summary)
 
+            WebElement correctImage = driver.findElement(By.xpath("/html/body/div/div/div[3]/div/img"));
+            if (correctImage.isDisplayed()) {
+                System.out.println("Image is correct.");
+            } else {
+                System.out.println("Image is NOT correct.");
+            }
 
+            WebElement correctName = driver.findElement(By.xpath("/html/body/div/div/div[3]/div/h3"));
+            if (correctName.isDisplayed()) {
+                System.out.println("Name is correct.");
+            } else {
+                System.out.println("Name is NOT correct.");
+            }
+
+            WebElement correctSummary = driver.findElement(By.xpath("/html/body/div/div/div[3]/div/p"));
+            if (correctSummary.isDisplayed()) {
+                System.out.println("Summary is correct.");
+            } else {
+                System.out.println("Summary is NOT correct.");
+            }
+
+            // Click the "Close" button on the modal
+            driver.findElement(By.xpath("/html/body/div/div/div[3]/div/button")).click();
+
+            // Verify that the modal is closed and no longer visible
+
+            WebElement lookForCloseButton = driver.findElement(By.xpath("/html/body/div/div/div[3]/div/button"));
+            if (lookForCloseButton.isDisplayed()) {
+                System.out.println("Modal is NOT closed and STILL visible.");
+            } else {
+                System.out.println("Modal is closed and not visible.");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
