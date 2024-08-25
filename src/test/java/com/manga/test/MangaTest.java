@@ -76,6 +76,70 @@ public class MangaTest {
                 System.out.println("User is NOT redirected to the manga search page.");
             }
 
+            // 2. Manga Search and Display
+
+           //Ensure the user is on the manga search page.
+
+            WebElement userOnMangaSearchPage = driver.findElement(By.xpath("/html/body/div/div/div[1]/button"));
+            if (userOnMangaSearchPage.isDisplayed()) {
+                System.out.println("User is on the manga search page.");
+            } else {
+                System.out.println("User is NOT on the manga search page.");
+            }
+
+            //Enter the search term "Naruto" into the search box.
+            WebElement webElement3 = driver.findElement(By.cssSelector("#manga-search"));
+            webElement3.clear();
+            webElement3.sendKeys("Naruto");
+
+            //Click the "Search" button
+            driver.findElement(By.xpath("/html/body/div/div/div[1]/button")).click();
+
+            //Verify that manga cards with the name "Naruto" are displayed
+            WebElement narutoDisplayed = driver.findElement(By.xpath("//*[@id=\"manga-name\"]"));
+            if (narutoDisplayed.isDisplayed()) {
+                System.out.println("Naruto is displayed.");
+            } else {
+                System.out.println("Naruto is NOT displayed.");
+            }
+
+            // Enter the search term "One Piece" into the search box
+            WebElement webElement4 = driver.findElement(By.cssSelector("#manga-search"));
+            webElement4.clear();
+            webElement4.sendKeys("One Piece");
+
+            //Click the "Search" button
+            driver.findElement(By.xpath("/html/body/div/div/div[1]/button")).click();
+
+            //Verify that manga cards with the name "One Piece" are displayed
+            WebElement onePieceDisplayed = driver.findElement(By.xpath("//*[@id=\"manga-name\"]"));
+            if (onePieceDisplayed.isDisplayed()) {
+                System.out.println("One Piece is displayed.");
+            } else {
+                System.out.println("One Piece is NOT displayed.");
+            }
+
+            //Enter the search term "Seven Deadly Sins" into the search box
+            WebElement webElement5 = driver.findElement(By.cssSelector("#manga-search"));
+            webElement5.clear();
+            webElement5.sendKeys("Seven Deadly Sins");
+
+            //Click the "Search" button
+            driver.findElement(By.xpath("/html/body/div/div/div[1]/button")).click();
+
+            //Verify that a "No manga found" message is displayed.
+            WebElement noManga = driver.findElement(By.cssSelector(".text-red-500"));
+            if (noManga.isDisplayed()) {
+                System.out.println("No manga found is displayed.");
+            } else {
+                System.out.println("No manga found is displayed.");
+            }
+
+
+
+
+
+
 
 
 
